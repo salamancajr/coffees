@@ -6,6 +6,8 @@
   "private": true,
   "license": "UNLICENSED",
   "scripts": {
+    "pretest:e2e": "docker-compose up -d test-db",
+    "posttest:e2e": "docker-compose stop test-db && docker-compose rm -f test-db",
     "prebuild": "rimraf dist",
     "build": "nest build",
     "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
@@ -62,6 +64,18 @@
     "typescript": "^3.7.4"
   },
   "jest": {
+    "roots": [
+      "<rootDir>",
+      "/src"
+    ],
+    "modulePaths": [
+      "<rootDir>",
+      "/src"
+    ],
+    "moduleDirectories": [
+      "node_modules",
+      "/src"
+    ],
     "moduleFileExtensions": [
       "js",
       "json",
